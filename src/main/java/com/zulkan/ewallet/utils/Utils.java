@@ -24,15 +24,6 @@ public class Utils {
         ).toList();
     }
 
-    public static String randomizeString(int length) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i =0 ;i < length;i++) {
-            int randInt = random.nextInt(26);
-            stringBuilder.append((char) ('a' + randInt));
-        }
-
-        return stringBuilder.toString();
-    }
 
     public static String toJson(Object o) {
         try {
@@ -48,7 +39,5 @@ public class Utils {
             return Optional.of(user);
         }
         return Optional.empty();
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        return (User) authentication.getPrincipal();
     }
 }
