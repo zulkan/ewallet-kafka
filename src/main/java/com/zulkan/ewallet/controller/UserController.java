@@ -3,11 +3,9 @@ package com.zulkan.ewallet.controller;
 import com.zulkan.ewallet.dto.request.CreateUserRequest;
 import com.zulkan.ewallet.dto.response.GetBalanceResponse;
 import com.zulkan.ewallet.model.User;
-import com.zulkan.ewallet.service.TransactionInterface;
 import com.zulkan.ewallet.service.UserInterface;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,13 +27,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "balance_read", method = RequestMethod.GET)
-    public ResponseEntity<Object> getBalance() {
+    public ResponseEntity<GetBalanceResponse> getBalance() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) authentication.getPrincipal();
 
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("user token not valid");
-        }
         return ResponseEntity.ok(new GetBalanceResponse(user.getBalance()));
     }
 

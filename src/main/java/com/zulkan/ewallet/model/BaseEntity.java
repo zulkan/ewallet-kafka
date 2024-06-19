@@ -36,12 +36,10 @@ public class BaseEntity {
     private LocalDateTime updatedAt;
 
     @Column(name = "created_by")
-    @CreatedBy
     @JsonIgnore
     private String createdBy;
 
     @Column(name = "updated_by")
-    @LastModifiedBy
     @JsonIgnore
     private String updatedBy;
 
